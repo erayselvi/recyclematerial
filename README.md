@@ -5,6 +5,6 @@
 
 ##KULLANILAN TEKNOLOJİLER</br>
 -Node.js Express</br>
--Template Engine</br>
+-Template Engine/PUG</br>
 -Sequelize</br>
 -Mysql
