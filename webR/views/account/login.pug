@@ -1,0 +1,22 @@
+extends ./account-layout.pug
+block content 
+    .vh-100.d-flex.justify-content-center.align-items-center
+      .col-md-4.p-5.shadow-sm.border.rounded-3
+        h2.text-center.mb-4.text-success Giri&scedil; Ekran&imath;
+        form(action="/account/login" name="loginform" method="POST")
+          .mb-3
+            label.form-label(for='inputemail') Email addres
+            input#inputemail.form-control.border.border-success(type='email', aria-describedby='emailHelp' placeholder='ornek@mail.com' name='mail')
+          .mb-3
+            label.form-label(for='exampleInputPassword1') &Scedil;ifre
+            input#exampleInputPassword1.form-control.border.border-success(type='password', aria-describedby='passwordHelpBlock' name='pw')
+          p.small
+            //a.text-success(href='forget-password.html') Forgot password?
+          .d-grid
+            button.btn.btn-success(type='submit') Giriş
+        .mt-3
+          p.mb-0.text-center
+            | Bir hesabınız yok mu? 
+            a.text-success.fw-bold(href='/register')
+              | Kayıt
+              | Ol

@@ -1,0 +1,11 @@
+extends ../layouts/main-layout.pug
+block content
+    BR
+    h3 MATERYAL EKLEME SAYFASI 
+    form(action='/admin/add-material' method='POST')
+        .input-group.mb-3
+        input.form-control(type='text' placeholder='Materyel Adı' name='name')
+        input.form-control(type='text' placeholder='Carbon Değerliği' name='carbonamount')
+        input.form-control(type='text' placeholder='imageUrl' name='imageUrl') 
+        BR
+        button.btn.btn-success(type='submit') Ekle

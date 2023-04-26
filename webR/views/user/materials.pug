@@ -1,0 +1,12 @@
+extends ../layouts/main-layout.pug
+block content
+  .row.row-cols-1.row-cols-md-5.g-4
+    each material in materials
+      .col
+        .card.my-4
+          img.mx-auto.mt-3(src=`/assests/${material.imageUrl}` alt=`` width=`60px` height=`120px` name='#{material.name}')
+          .card-body
+            h5.card-title #{material.name}
+            h7.card-body Carbon Değerliği: #{material.carbonvalue}
+
+

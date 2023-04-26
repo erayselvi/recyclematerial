@@ -1,0 +1,16 @@
+extends ../layouts/main-layout.pug
+block content
+  .row.row-cols-1.row-cols-md-5.g-4
+    each material in materials
+      .col
+        .card.my-4
+          img.mx-auto.mt-3(src=`/assests/${material.imageUrl}` alt=`` width=`60px` height=`120px` name='#{material.name}')
+          .card-body
+            h5.card-title #{material.name}
+            p.card-text Carbon Değerliği: #{material.carbonvalue}
+            form(action='/addcarbon' method='POST')
+              input(type='hidden' name='materialname' value=`${material.name}`)
+              .input-group.mb-3
+                input.form-control(type='text' placeholder='MİKTAR...' aria-describedby='button-addon2' name='carbonamount' )
+                button#button-addon2.btn.btn-outline-secondary(type='submit') D&Ouml;N&Uuml;&Scedil;T&Uuml;R
+

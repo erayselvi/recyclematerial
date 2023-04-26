@@ -1,0 +1,54 @@
+extends ../layouts/main-layout.pug
+
+
+block content
+    .container-lg.my-4.border.border-2.rounded-3.bg-success.bg-gradient.text-white
+        h2 CÜZDAN OLUŞTURMAK İÇİN 
+            |
+            a.link-success.text-white(href='/new-wallet' name="nwahref") TIKLAYINIZ
+    .container-lg.my-4.border.border-2.rounded-3 
+        .mt-2
+            .row 
+                .col-sm-8 WALLETS
+                .col-sm-4 COIN AMOUNT
+                each wallet in wallets
+                    .col-sm-8 #{wallet.walletid}
+                    .col-sm-4 #{wallet.rcoinamount}
+    .container-lg.my-4.border.border-2.rounded-3 
+        .mt-2 
+        h4 CÜZDAN İŞLEMLERİ
+    
+        form.mx-2(action='/user/wallet' method='POST' )
+            .form-group.my-3
+                label(for='tWalletInput') Wallet address #{mywalletid}
+                input#tWalletInput.form-control(type='wallet' aria-describedby='walletHelp' placeholder='Cüzdan giriniz...' name='mywalletid')
+                small#walletHelp.form-text.text-muted Transfer adresi yanlış yazıldığında sorumluluk size aittir.
+            .form-group.my-3
+                label(for='tWalletInput') Wallet Şifresi
+                input#tWalletInput.form-control(type='wallet' aria-describedby='walletHelp' placeholder='Şifre giriniz...' name='mywalletpassword')  
+            .form-group.my-3
+                label(for='tWalletInput') Gönderilecek  Wallet address
+                input#tWalletInput.form-control(type='wallet' aria-describedby='walletHelp' placeholder='Cüzdan giriniz...' name='transferwalletid')
+                small#walletHelp.form-text.text-muted Transfer adresi yanlış yazıldığında sorumluluk size aittir.
+            .form-group.my-3
+                label(for='tRCoin') Gönderilecek Coin Miktarı
+                input#tRCoin.form-control(placeholder='Coin Miktarı Giriniz...' name='transferrcoinamount')
+            .form-check.my-3
+                input#exampleCheck1.form-check-input(type='checkbox')
+                label.form-check-label(for='exampleCheck1') Onaylıyorum
+            button.btn.btn-success.mb-3(type='submit' name='transfersubmit') Gönder
+
+    .container-lg.my-5.border.border-2.rounded-3 
+        h4.mt-2 Carbon İşlemleri 1 Recycle Coin(RC) = 100.000.000 Carbon (C)
+        form.mx-2(action='/user/carbontocoin' method='POST')
+            .form-group.my-3
+                label(for='tRCoin') Dönüştürülecek Carbon Miktarı (Mevcut: #{carbonamount}) 
+                input#tRCoin.form-control(placeholder='Carbon Miktarı Giriniz...' name='tcarbonamount')
+            .form-group.my-3
+                label(for='tRCoins') Aktarılacak Cüzdan Adresi
+                input#tRCoins.form-control(placeholder='84fc0a6d6161aa21e8f266beafd5edcde832d0f07db025ae07bd4cfe6ad3ccd1' value='84fc0a6d6161aa21e8f266beafd5edcde832d0f07db025ae07bd4cfe6ad3ccd1' name='transferwalletid')    
+            .form-check.my-3
+                input#tCarbon.form-check-input(type='checkbox' name='carbontransfersubmit')
+                label.form-check-label(for='tCarbon') Onaylıyorum
+            button.btn.btn-success(type='submit') Dönüştür    
+

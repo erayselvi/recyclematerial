@@ -1,0 +1,42 @@
+header
+  nav.navbar.navbar-expand-lg.bg-success
+    .container-fluid
+      a.navbar-brand(href='#')
+        img(src='/assests/rc.png' alt='logo' width='60' height='60')
+      a.navbar-brand.text-light(href='/') RecycleCoin
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link.active.text-light(aria-current='page' href='/materials') Metaryaller
+          if isAuthenticated  
+            li.nav-item
+            a.nav-link.text-light( href='/wallet', class=(path ==='/login'?'nav-link active':'nav-link')) C&uuml;zdan İşlemleri
+
+
+          if isAuthorization
+              h3 |Admin|
+              li.nav-item
+                a.nav-link.text-light( href='/admin/add-material', class=(path ==='/add-material'?'nav-link active':'nav-link')) Material Ekle
+              li.nav-item
+                a.nav-link.text-light( href='/admin/edit-material', class=(path ==='/add-material'?'nav-link active':'nav-link')) Material Düzenle
+        ul.navbar-nav.ms-auto
+          if isAuthenticated
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle.text-light(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false', class=(path ==='/login'?'nav-link active':'nav-link'))
+                | #{name} #{sname}
+              ul.dropdown-menu
+                li
+                  a.dropdown-item(href='#', class=(path ==='/login'?'nav-link active':'nav-link')) Profil
+                li
+                  a.dropdown-item(href='/logout', class=(path ==='/logout'?'nav-link active':'nav-link')) Çıkış Yap
+                li
+                  hr.dropdown-divider
+          else 
+              li.navbar-nav
+                a.nav-link.active.text-light(aria-current='page' href='/register') Kayıt Ol 
+              li.navbar-nav
+                a.nav-link.active.text-light(aria-current='page' href='/login') Giriş Yap
+                
+              
